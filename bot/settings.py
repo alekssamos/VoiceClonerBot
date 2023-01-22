@@ -1,5 +1,6 @@
+import os
+import os.path
 from aiogram.dispatcher.filters.state import State, StatesGroup
-
 
 class States(StatesGroup):
     INIT_STATE = State()
@@ -9,9 +10,17 @@ class States(StatesGroup):
     USER_ADD_ENGLISH = State()
 
 
-VOICE_SAVE_PATH = 'bot/files/voice'
-EMB_SAVE_PATH = 'bot/files/emb'
-VOICE_OUT_PATH = 'bot/files/temp_transformed_voice'
+VOICE_SAVE_PATH = os.path.join('bot', 'files', 'voice')
+if not os.path.isdir(VOICE_SAVE_PATH):
+    os.mkdir(VOICE_SAVE_PATH)
+
+EMB_SAVE_PATH = os.path.join('bot', 'files', 'emb')
+if not os.path.isdir(EMB_SAVE_PATH):
+    os.mkdir(EMB_SAVE_PATH)
+
+VOICE_OUT_PATH = os.path.join('bot', 'files', 'temp_transformed_voice')
+if not os.path.isdir(VOICE_OUT_PATH):
+    os.mkdir(VOICE_OUT_PATH)
 
 BOT_TOKEN = ""
 BOT_NAME = 'Voice Cloner'
